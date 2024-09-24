@@ -6,11 +6,12 @@
   "author": "Alireza Bahrani",
   "license": "MIT",
   "type": "module",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
+  "bin": "dist/cli.js",
   "scripts": {
     "lint:prettier": "prettier --check --cache ./src/**/*.{js,jsx,ts,tsx}",
     "prettify": "prettier --write --cache ./src/**/*.{js,jsx,ts,tsx}",
