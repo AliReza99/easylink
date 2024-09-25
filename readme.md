@@ -1,1 +1,1 @@
-## npx @rezor/easylink
+## npx @arbz/easylink
