@@ -1,5 +1,5 @@
 {
-  "name": "@rezor/easylink",
+  "name": "@arbz/easylink",
   "private": false,
   "version": "1.0.2",
   "description": "",
@@ -17,20 +17,31 @@
     "prettify": "prettier --write --cache ./src/**/*.{js,jsx,ts,tsx}",
     "lint": "tsc --noEmit && eslint --cache --cache-location ./node_modules/.cache/eslint/ --quiet --ext .js,.jsx,.ts,.tsx,.mjs src",
     "prebuild": "rimraf dist",
-    "build": "tsc",
-    "do-link": "npm link",
+    "build": "tsup src/cli.ts --format esm --dts --out-dir dist",
+    "build:watch": "tsup src/cli.ts --format esm --out-dir dist --watch",
+    "dev": "concurrently --raw --hide '0' \"npm run build:watch\" \"nodemon -I --watch dist dist/cli.js\"",
     "release:patch": "npm version patch",
     "release:major": "npm version major",
     "release:private": "npm publish --access=restricted",
     "release:public": "npm publish --access=public"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@arbz/execute": "^1.0.3",
+    "await-to-js": "^3.0.0",
+    "log-symbols": "^7.0.0",
+    "prompts": "^2.4.2",
+    "tsup": "^8.3.0"
+  },
   "devDependencies": {
-    "typescript": "^5.6.2",
+    "@types/node": "^22.7.0",
+    "@types/prompts": "^2.4.9",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
+    "concurrently": "^9.0.1",
     "eslint": "^8.48.0",
+    "nodemon": "^3.1.7",
+    "prettier": "^3.0.3",
     "rimraf": "^6.0.1",
-    "prettier": "^3.0.3"
+    "typescript": "^5.6.2"
   }
 }
